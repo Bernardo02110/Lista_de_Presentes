@@ -1,6 +1,7 @@
 package br.com.up.listadepresentes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import br.com.up.listadepresentes.models.Gift;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import br.com.up.listadepresentes.models.Gift;
 
 public class AddGiftActivity extends AppCompatActivity {
 
@@ -52,6 +55,18 @@ public class AddGiftActivity extends AppCompatActivity {
         String name = inputEditTextName.getText().toString();
         String giftName = inputEditTextGift.getText().toString();
         String description = inputEditTextDescription.getText().toString();
+
+        if(name.isEmpty()) {
+            inputLayoutName.setError("Favor inserir o nome");
+        }
+
+        if(giftName.isEmpty()) {
+            inputLayoutGift.setError("Favor inserir a Presente");
+        }
+
+        Gift gift = new Gift(
+                name, giftName, description
+        );
     }
 
 }
